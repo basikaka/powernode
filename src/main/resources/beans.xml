@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 声明bean对象 -->
+    <bean id="myStudent" class="com.hongrider.vo.Student" >
+        <property name="name" value="shiny"></property>
+        <property name="sex" value="male"></property>
+        <property name="age" value="23"></property>
+    </bean>
+    <bean id="goodStudent" class="com.hongrider.vo.Student" >
+        <property name="name" value="jerry"></property>
+        <property name="sex" value="male"></property>
+        <property name="age" value="25"></property>
+    </bean>
+
+</beans>

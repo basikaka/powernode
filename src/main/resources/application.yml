@@ -1,0 +1,9 @@
+server:
+  port: 80
+
+
+user:
+  name: "乔丹"
+  num: 23
+
+
