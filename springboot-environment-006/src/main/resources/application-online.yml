@@ -1,0 +1,9 @@
+server:
+  servlet:
+    context-path: /myonline
+  port: 80
+
+# 自定义的
+school:
+  name: "野猪大学"
+  site: "www.hongrider.com"
