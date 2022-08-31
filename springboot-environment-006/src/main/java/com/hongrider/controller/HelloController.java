@@ -1,5 +1,7 @@
 package com.hongrider.controller;
 
+import com.hongrider.vo.SchoolInfo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,6 +29,14 @@ public class HelloController {
     @GetMapping("/school")
     public String school(){
         return name + "site: " + site + " 访问的项目路径： " + path + " 端口号： " + port;
+    }
+
+    @Autowired
+    SchoolInfo school;
+
+    @GetMapping("/hongrider")
+    public String hongSchool(){
+        return  ( school.getName() + " site: " +school.getSite() + " 地址： " + school.getAddress());
     }
 
 }
