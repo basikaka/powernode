@@ -3,7 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="gorCat" class="com.hongrider.vo.Cat">
+    <bean id="gorCat" class="com.hogrider.vo.Cat">
         <property name="age" value="3"></property>
         <property name="name" value="jerry"></property>
     </bean>
