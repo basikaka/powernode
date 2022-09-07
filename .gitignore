@@ -20,6 +20,7 @@ target/
 .mvn
 mvnw*
 .mvn/wrapper
+.DS_Store
 
 ### NetBeans ###
 /nbproject/private/
