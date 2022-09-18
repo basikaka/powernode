@@ -1,9 +1,13 @@
 package com.hogrider.controller;
 
+import com.hogrider.vo.Student;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
+import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
+import org.springframework.data.redis.serializer.RedisSerializer;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -66,5 +70,41 @@ public class RedisController {
     public String getStringData( @PathVariable String k){
         String v = stringRedisTemplate.opsForValue().get(k);
         return "从redis用stringtemplate获取数据V： " + v;
+    }
+
+    /**
+     * 使用 Json 序列化存储，把 Java 对象转换为 Json 存储。
+     */
+    @PostMapping("/redis/addjson")
+    public String addJson(){
+
+        Student student = new Student();
+        student.setId(2001);
+        student.setName("hogrider");
+        student.setAge(22);
+
+        redisTemplate.setKeySerializer( new StringRedisSerializer());
+
+        // 把值进行Json序列化存储
+        redisTemplate.setValueSerializer( new Jackson2JsonRedisSerializer(Student.class));
+
+        redisTemplate.opsForValue().set("myStudent", student);
+
+        return "存储json序列化后的数据到Redis";
+    }
+
+    @GetMapping("/redis/getjson")
+    public String getJson(){
+
+
+
+        redisTemplate.setKeySerializer( new StringRedisSerializer());
+
+        // 把值进行Json序列化存储
+        redisTemplate.setValueSerializer( new Jackson2JsonRedisSerializer(Student.class));
+
+        Object myStudent = redisTemplate.opsForValue().get("myStudent");
+
+        return "从redis中获取后反序列化=" + myStudent;
     }
 }
