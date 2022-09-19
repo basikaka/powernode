@@ -1,0 +1,13 @@
+# ??????
+spring:
+  application:
+    name: "student_service_provider"
+
+# ??????
+dubbo:
+  scan:
+    base-packages: "com.hogrider.service"
+    # ????
+  registry:
+    address: zookeeper://localhost:2181
+
